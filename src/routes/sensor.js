@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getsensorHumidity, getsensorPressure, getsensorTemperature } from '../controllers/sensor.js';
+import { getsensor, getsensorHumidity, getsensorPressure, getsensorTemperature } from '../controllers/sensor.js';
 
 const router = Router();
 
@@ -10,7 +10,14 @@ const router = Router();
  *  description: Sensor endpoints
  */
 
-
+/**
+ * @swagger
+ * /:
+ *  get:
+ *   summary: get all sensors
+ *   tags: [Sensor]
+ */
+router.get('/', getsensor);
 
 /**
  * @swagger

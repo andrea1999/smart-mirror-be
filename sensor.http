@@ -1,9 +1,12 @@
-@api = http://localhost:3000/sensor
+@api = http://localhost:3000
 
-GET {{api}}/temperature
-
-###
-GET {{api}}/humidity
+GET {{api}}/sensor/temperature
 
 ###
-GET {{api}}/pressure
+GET {{api}}/sensor/humidity
+
+###
+GET {{api}}/sensor/pressure
+
+###
+GET {{api}}
