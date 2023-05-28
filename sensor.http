@@ -9,4 +9,7 @@ GET {{api}}/sensor/humidity
 GET {{api}}/sensor/pressure
 
 ###
-GET {{api}}
+GET {{api}}/sensor/latest
+
+###
+GET {{api}}/sensor/last-week

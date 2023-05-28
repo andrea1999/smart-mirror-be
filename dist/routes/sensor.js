@@ -1,7 +1,12 @@
-import { Router } from 'express';
-import { getlastweek, getlatest, getsensor, getsensorHumidity, getsensorPressure, getsensorTemperature } from '../controllers/sensor.js';
+"use strict";
 
-const router = Router();
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _express = require("express");
+var _sensor = require("../controllers/sensor.js");
+var router = (0, _express.Router)();
 
 /**
  * @swagger
@@ -17,7 +22,7 @@ const router = Router();
  *   summary: get all sensors
  *   tags: [Sensor]
  */
-router.get('/', getsensor);
+router.get('/', _sensor.getsensor);
 
 /**
  * @swagger
@@ -26,7 +31,7 @@ router.get('/', getsensor);
  *   summary: get temperature
  *   tags: [Sensor]
  */
-router.get('/sensor/temperature', getsensorTemperature);
+router.get('/sensor/temperature', _sensor.getsensorTemperature);
 
 /**
  * @swagger
@@ -35,7 +40,7 @@ router.get('/sensor/temperature', getsensorTemperature);
  *   summary: get humidity
  *   tags: [Sensor]
  */
-router.get('/sensor/humidity', getsensorHumidity);
+router.get('/sensor/humidity', _sensor.getsensorHumidity);
 
 /**
  * @swagger
@@ -44,7 +49,7 @@ router.get('/sensor/humidity', getsensorHumidity);
  *   summary: get pressure
  *   tags: [Sensor]
  */
-router.get('/sensor/pressure', getsensorPressure);
+router.get('/sensor/pressure', _sensor.getsensorPressure);
 
 /**
  * @swagger
@@ -53,7 +58,7 @@ router.get('/sensor/pressure', getsensorPressure);
  *   summary: get latest data from sensor
  *   tags: [Sensor]
  */
-router.get('/sensor/latest', getlatest);
+router.get('/sensor/latest', _sensor.getlatest);
 
 /**
  * @swagger
@@ -62,6 +67,6 @@ router.get('/sensor/latest', getlatest);
  *   summary: get last week's data from sensor
  *   tags: [Sensor]
  */
-router.get('/sensor/last-week', getlastweek);
-
-export default router;
+router.get('/sensor/last-week', _sensor.getlastweek);
+var _default = router;
+exports["default"] = _default;
