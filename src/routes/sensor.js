@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getlastweek, getlatest, getsensor, getsensorHumidity, getsensorPressure, getsensorTemperature } from '../controllers/sensor.js';
+import { getlastweek, getlatest, getsensor, getsensorHumidity, getsensorPressure, getsensorTemperature, getyesterday } from '../controllers/sensor.js';
 
 const router = Router();
 
@@ -63,5 +63,14 @@ router.get('/sensor/latest', getlatest);
  *   tags: [Sensor]
  */
 router.get('/sensor/last-week', getlastweek);
+
+/**
+ * @swagger
+ * /sensor/yesterday:
+ *  get:
+ *   summary: get yesterday's data from sensor
+ *   tags: [Sensor]
+ */
+router.get('/sensor/yesterday', getyesterday);
 
 export default router;

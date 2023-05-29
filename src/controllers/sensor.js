@@ -32,7 +32,29 @@ export const getsensorTemperature = async (req, res) => {
 
   export const getlastweek = async (req, res) => {
     const connection = await connect()
-    const [rows] = await connection.query('SELECT DATE(FROM_UNIXTIME(timestamp)) AS date, AVG(temperature) AS average_temperature, AVG(humidity) AS average_humidity, AVG(pressure) AS average_pressure FROM sensors WHERE timestamp >= UNIX_TIMESTAMP(CURDATE() - INTERVAL 7 DAY) GROUP BY DATE(FROM_UNIXTIME(timestamp)) ORDER BY date DESC')
+    const [rows] = await connection.query(`
+    SELECT DATE_FORMAT(FROM_UNIXTIME(timestamp / 1000), '%d-%m-%Y') AS date,
+           AVG(temperature) AS average_temperature,
+           AVG(humidity) AS average_humidity,
+           AVG(pressure) AS average_pressure
+    FROM sensors
+    WHERE DATE(FROM_UNIXTIME(timestamp / 1000)) >= CURDATE() - INTERVAL 7 DAY
+          AND timestamp >= UNIX_TIMESTAMP(CURDATE() - INTERVAL 7 DAY) * 1000
+          AND timestamp < UNIX_TIMESTAMP(CURDATE()) * 1000
+    GROUP BY DATE_FORMAT(FROM_UNIXTIME(timestamp / 1000), '%Y-%m-%d')
+    ORDER BY date DESC;
+    `)
     res.json(rows);
   };
   
+  export const getyesterday = async (req, res) => {
+    const connection = await connect()
+    const [rows] = await connection.query(`
+    SELECT *
+    FROM sensors
+    WHERE DATE(FROM_UNIXTIME(timestamp / 1000)) = CURDATE() - INTERVAL 1 DAY
+    ORDER BY ABS(timestamp - UNIX_TIMESTAMP(NOW())) ASC
+    LIMIT 1;
+    `)
+    res.json(rows);
+  };

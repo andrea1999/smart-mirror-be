@@ -13,3 +13,6 @@ GET {{api}}/sensor/latest
 
 ###
 GET {{api}}/sensor/last-week
+
+###
+GET {{api}}/sensor/yesterday

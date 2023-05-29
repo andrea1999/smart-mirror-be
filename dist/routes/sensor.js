@@ -68,5 +68,14 @@ router.get('/sensor/latest', _sensor.getlatest);
  *   tags: [Sensor]
  */
 router.get('/sensor/last-week', _sensor.getlastweek);
+
+/**
+ * @swagger
+ * /sensor/yesterday:
+ *  get:
+ *   summary: get yesterday's data from sensor
+ *   tags: [Sensor]
+ */
+router.get('/sensor/yesterday', _sensor.getyesterday);
 var _default = router;
 exports["default"] = _default;
