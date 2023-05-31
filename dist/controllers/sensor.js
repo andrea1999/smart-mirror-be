@@ -166,7 +166,7 @@ var getlastweek = /*#__PURE__*/function () {
         case 2:
           connection = _context6.sent;
           _context6.next = 5;
-          return connection.query("\n    SELECT DATE_FORMAT(FROM_UNIXTIME(timestamp / 1000), '%d-%m-%Y') AS date,\n           AVG(temperature) AS average_temperature,\n           AVG(humidity) AS average_humidity,\n           AVG(pressure) AS average_pressure\n    FROM sensors\n    WHERE DATE(FROM_UNIXTIME(timestamp / 1000)) >= CURDATE() - INTERVAL 7 DAY\n          AND timestamp >= UNIX_TIMESTAMP(CURDATE() - INTERVAL 7 DAY) * 1000\n          AND timestamp < UNIX_TIMESTAMP(CURDATE()) * 1000\n    GROUP BY DATE_FORMAT(FROM_UNIXTIME(timestamp / 1000), '%Y-%m-%d')\n    ORDER BY date DESC;\n    ");
+          return connection.query("\n    SELECT DATE_FORMAT(FROM_UNIXTIME(timestamp / 1000), '%d-%m-%Y') AS date,\n           AVG(temperature) AS average_temperature,\n           AVG(humidity) AS average_humidity,\n           AVG(pressure) AS average_pressure\n    FROM sensors\n    WHERE DATE(FROM_UNIXTIME(timestamp / 1000)) >= CURDATE() - INTERVAL 7 DAY\n          AND timestamp >= UNIX_TIMESTAMP(CURDATE() - INTERVAL 7 DAY) * 1000\n          AND timestamp < UNIX_TIMESTAMP(CURDATE()) * 1000\n    GROUP BY DATE_FORMAT(FROM_UNIXTIME(timestamp / 1000), '%Y-%m-%d')\n    ORDER BY date ASC;\n    ");
         case 5:
           _yield$connection$que11 = _context6.sent;
           _yield$connection$que12 = _slicedToArray(_yield$connection$que11, 1);

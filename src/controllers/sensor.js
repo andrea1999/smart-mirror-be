@@ -42,7 +42,7 @@ export const getsensorTemperature = async (req, res) => {
           AND timestamp >= UNIX_TIMESTAMP(CURDATE() - INTERVAL 7 DAY) * 1000
           AND timestamp < UNIX_TIMESTAMP(CURDATE()) * 1000
     GROUP BY DATE_FORMAT(FROM_UNIXTIME(timestamp / 1000), '%Y-%m-%d')
-    ORDER BY date DESC;
+    ORDER BY date ASC;
     `)
     res.json(rows);
   };
