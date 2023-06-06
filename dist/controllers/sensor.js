@@ -22,7 +22,7 @@ var getsensor = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return (0, _database.connect)();
+          return (0, _database.getConnection)();
         case 2:
           connection = _context.sent;
           _context.next = 5;
@@ -32,7 +32,8 @@ var getsensor = /*#__PURE__*/function () {
           _yield$connection$que2 = _slicedToArray(_yield$connection$que, 1);
           rows = _yield$connection$que2[0];
           res.json(rows);
-        case 9:
+          connection.release();
+        case 10:
         case "end":
           return _context.stop();
       }
@@ -50,7 +51,7 @@ var getsensorTemperature = /*#__PURE__*/function () {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return (0, _database.connect)();
+          return (0, _database.getConnection)();
         case 2:
           connection = _context2.sent;
           _context2.next = 5;
@@ -60,7 +61,8 @@ var getsensorTemperature = /*#__PURE__*/function () {
           _yield$connection$que4 = _slicedToArray(_yield$connection$que3, 1);
           rows = _yield$connection$que4[0];
           res.json(rows);
-        case 9:
+          connection.release();
+        case 10:
         case "end":
           return _context2.stop();
       }
@@ -78,7 +80,7 @@ var getsensorHumidity = /*#__PURE__*/function () {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
           _context3.next = 2;
-          return (0, _database.connect)();
+          return (0, _database.getConnection)();
         case 2:
           connection = _context3.sent;
           _context3.next = 5;
@@ -88,7 +90,8 @@ var getsensorHumidity = /*#__PURE__*/function () {
           _yield$connection$que6 = _slicedToArray(_yield$connection$que5, 1);
           rows = _yield$connection$que6[0];
           res.json(rows);
-        case 9:
+          connection.release();
+        case 10:
         case "end":
           return _context3.stop();
       }
@@ -106,7 +109,7 @@ var getsensorPressure = /*#__PURE__*/function () {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
           _context4.next = 2;
-          return (0, _database.connect)();
+          return (0, _database.getConnection)();
         case 2:
           connection = _context4.sent;
           _context4.next = 5;
@@ -116,7 +119,8 @@ var getsensorPressure = /*#__PURE__*/function () {
           _yield$connection$que8 = _slicedToArray(_yield$connection$que7, 1);
           rows = _yield$connection$que8[0];
           res.json(rows);
-        case 9:
+          connection.release();
+        case 10:
         case "end":
           return _context4.stop();
       }
@@ -134,7 +138,7 @@ var getlatest = /*#__PURE__*/function () {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
           _context5.next = 2;
-          return (0, _database.connect)();
+          return (0, _database.getConnection)();
         case 2:
           connection = _context5.sent;
           _context5.next = 5;
@@ -144,7 +148,8 @@ var getlatest = /*#__PURE__*/function () {
           _yield$connection$que10 = _slicedToArray(_yield$connection$que9, 1);
           rows = _yield$connection$que10[0];
           res.json(rows);
-        case 9:
+          connection.release();
+        case 10:
         case "end":
           return _context5.stop();
       }
@@ -162,7 +167,7 @@ var getlastweek = /*#__PURE__*/function () {
       while (1) switch (_context6.prev = _context6.next) {
         case 0:
           _context6.next = 2;
-          return (0, _database.connect)();
+          return (0, _database.getConnection)();
         case 2:
           connection = _context6.sent;
           _context6.next = 5;
@@ -172,7 +177,8 @@ var getlastweek = /*#__PURE__*/function () {
           _yield$connection$que12 = _slicedToArray(_yield$connection$que11, 1);
           rows = _yield$connection$que12[0];
           res.json(rows);
-        case 9:
+          connection.release();
+        case 10:
         case "end":
           return _context6.stop();
       }
@@ -190,7 +196,7 @@ var getyesterday = /*#__PURE__*/function () {
       while (1) switch (_context7.prev = _context7.next) {
         case 0:
           _context7.next = 2;
-          return (0, _database.connect)();
+          return (0, _database.getConnection)();
         case 2:
           connection = _context7.sent;
           _context7.next = 5;
@@ -200,7 +206,8 @@ var getyesterday = /*#__PURE__*/function () {
           _yield$connection$que14 = _slicedToArray(_yield$connection$que13, 1);
           rows = _yield$connection$que14[0];
           res.json(rows);
-        case 9:
+          connection.release();
+        case 10:
         case "end":
           return _context7.stop();
       }

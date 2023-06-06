@@ -1,37 +1,42 @@
-import { connect } from "../database.js";
+import { getConnection } from '../database.js';
 
 export const getsensor = async (req, res) => {
-  const connection = await connect()
-  const [rows] = await connection.query('SELECT * FROM sensors')
+  const connection = await getConnection();
+  const [rows] = await connection.query('SELECT * FROM sensors');
   res.json(rows);
+  connection.release();
 };
 
 export const getsensorTemperature = async (req, res) => {
-    const connection = await connect()
+    const connection = await getConnection();
     const [rows] = await connection.query('SELECT timestamp, temperature FROM sensors')
     res.json(rows);
+    connection.release();
   };
 
   export const getsensorHumidity = async (req, res) => {
-    const connection = await connect()
+    const connection = await getConnection();
     const [rows] = await connection.query('SELECT timestamp, humidity FROM sensors')
     res.json(rows);
+    connection.release();
   };
 
   export const getsensorPressure = async (req, res) => {
-    const connection = await connect()
+    const connection = await getConnection();
     const [rows] = await connection.query('SELECT timestamp, pressure FROM sensors')
     res.json(rows);
+    connection.release();
   };
 
   export const getlatest = async (req, res) => {
-    const connection = await connect()
+    const connection = await getConnection();
     const [rows] = await connection.query('SELECT * FROM sensors ORDER BY timestamp DESC LIMIT 1')
     res.json(rows);
+    connection.release();
   };
 
   export const getlastweek = async (req, res) => {
-    const connection = await connect()
+    const connection = await getConnection();
     const [rows] = await connection.query(`
     SELECT DATE_FORMAT(FROM_UNIXTIME(timestamp / 1000), '%d-%m-%Y') AS date,
            AVG(temperature) AS average_temperature,
@@ -45,10 +50,11 @@ export const getsensorTemperature = async (req, res) => {
     ORDER BY date ASC;
     `)
     res.json(rows);
+    connection.release();
   };
   
   export const getyesterday = async (req, res) => {
-    const connection = await connect()
+    const connection = await getConnection();
     const [rows] = await connection.query(`
     SELECT *
     FROM sensors
@@ -57,4 +63,5 @@ export const getsensorTemperature = async (req, res) => {
     LIMIT 1;
     `)
     res.json(rows);
+    connection.release();
   };
