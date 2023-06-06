@@ -1,4 +1,4 @@
-@api = http://localhost:3000
+@api = http://smartreflectbe-env.eba-6h3empqx.eu-west-1.elasticbeanstalk.com
 
 GET {{api}}/sensor/temperature
 
